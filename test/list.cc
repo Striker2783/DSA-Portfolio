@@ -20,4 +20,6 @@ TEST(ListTest, Push_Back)
     l.push_back(1);
     ASSERT_EQ(l.size(), 3);
     ASSERT_EQ(l.max(), 4);
+    ASSERT_EQ(l[2], 1);
+    EXPECT_THROW(l[10], std::exception);
 }

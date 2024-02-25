@@ -23,7 +23,15 @@ public:
     size_t size() { return index; }
     size_t max() { return max_size; }
     T pop_back();
+    T &operator[](size_t i);
 };
+template <typename T>
+T &List<T>::operator[](size_t i)
+{
+    if (i >= index)
+        throw std::exception();
+    return arr[i];
+}
 template <typename T>
 bool List<T>::push_back(T e)
 {
