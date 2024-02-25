@@ -21,7 +21,7 @@ TEST(ListTest, Push_Back)
     ASSERT_EQ(l.size(), 3);
     ASSERT_EQ(l.max(), 4);
     ASSERT_EQ(l[2], 1);
-    EXPECT_THROW(l[10], std::exception);
+    EXPECT_THROW(l[10], std::out_of_range);
 }
 
 TEST(ListTest, Pop_Back)
@@ -46,4 +46,21 @@ TEST(ListTest, Empty_List)
     ASSERT_EQ(l.size(), 1);
     ASSERT_EQ(l.max(), 1);
     ASSERT_TRUE(l[0]);
+}
+
+TEST(ListTest, Insert)
+{
+    List<int> l(10);
+    EXPECT_THROW(l.insert(2, 0), std::out_of_range);
+    l.push_back(0);
+    l.push_back(1);
+    l.push_back(2);
+    EXPECT_NO_THROW(l.insert(2, 3));
+    ASSERT_EQ(l[2], 3);
+    ASSERT_EQ(l[3], 2);
+    EXPECT_NO_THROW(l.insert(4, 4));
+    ASSERT_EQ(l[4], 4);
+    EXPECT_NO_THROW(l.insert(0, 5));
+    ASSERT_EQ(l[0], 5);
+    ASSERT_EQ(l[1], 0);
 }
