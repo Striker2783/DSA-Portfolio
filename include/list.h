@@ -10,23 +10,25 @@ class List
 private:
     T *arr;
     size_t index;
-    size_t max;
+    size_t max_size;
 
     void resize(size_t n);
 
 public:
     List() { *this = List(10); };
-    List(size_t size) : arr(new T[size]), index(0), max(size){};
+    List(size_t size) : arr(new T[size]), index(0), max_size(size){};
     ~List() { delete arr; };
     bool push_back(T e);
     bool is_empty() { return index == 0; }
+    size_t size() { return index; }
+    size_t max() { return max_size; }
     T pop_back();
 };
 template <typename T>
 bool List<T>::push_back(T e)
 {
-    if (index >= max)
-        this->resize(max * 2);
+    if (index >= max_size)
+        this->resize(max_size * 2);
     arr[index] = e;
     index++;
     return true;
@@ -37,7 +39,7 @@ void List<T>::resize(size_t size)
     T *new_arr = new T[size];
     for (size_t i = 0; i < this->index; i++)
         new_arr[i] = arr[i];
-    this->max = size;
+    this->max_size = size;
 }
 template <typename T>
 T List<T>::pop_back()

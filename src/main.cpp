@@ -8,7 +8,7 @@ int main()
     for (size_t i = 0; i < 30; i++)
     {
         list.push_back(i);
-    }
-
+    };
+    std::cout << "Hello Friend \n";
     return 0;
 }
