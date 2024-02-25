@@ -55,7 +55,7 @@ T List<T>::pop_back()
     if (is_empty())
         throw std::exception();
     index--;
-    return arr[index + 1];
+    return arr[index];
 }
 
 #endif
