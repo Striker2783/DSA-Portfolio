@@ -15,7 +15,7 @@ private:
     void resize(size_t n);
 
 public:
-    List() { *this = List(10); };
+    List() : arr(new T[10]), index(0), max_size(10){};
     List(size_t size) : arr(new T[size]), index(0), max_size(size){};
     ~List() { delete arr; };
     bool push_back(T e);
