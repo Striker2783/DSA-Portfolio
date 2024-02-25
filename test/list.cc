@@ -32,8 +32,18 @@ TEST(ListTest, Pop_Back)
     ASSERT_EQ(l.size(), 2);
     ASSERT_TRUE(l.pop_back());
     ASSERT_EQ(l.size(), 1);
+    ASSERT_EQ(l.max(), 2);
     ASSERT_TRUE(l.pop_back());
     ASSERT_EQ(l.size(), 0);
+    ASSERT_EQ(l.max(), 1);
     EXPECT_THROW(l.pop_back(), std::exception);
-    ASSERT_EQ(l.size(), 0);
+}
+
+TEST(ListTest, Empty_List)
+{
+    List<bool> l(0);
+    ASSERT_TRUE(l.push_back(true));
+    ASSERT_EQ(l.size(), 1);
+    ASSERT_EQ(l.max(), 1);
+    ASSERT_TRUE(l[0]);
 }

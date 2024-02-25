@@ -35,8 +35,8 @@ T &List<T>::operator[](size_t i)
 template <typename T>
 bool List<T>::push_back(T e)
 {
-    if (index >= max_size)
-        this->resize(max_size * 2);
+    if (index >= max())
+        this->resize(max() * 2);
     arr[index] = e;
     index++;
     return true;
@@ -44,6 +44,8 @@ bool List<T>::push_back(T e)
 template <typename T>
 void List<T>::resize(size_t size)
 {
+    if (size == 0)
+        size = 1;
     T *new_arr = new T[size];
     for (size_t i = 0; i < this->index; i++)
         new_arr[i] = arr[i];
@@ -55,6 +57,8 @@ T List<T>::pop_back()
     if (is_empty())
         throw std::exception();
     index--;
+    if (index * 3 < max())
+        resize(index * 2);
     return arr[index];
 }
 
