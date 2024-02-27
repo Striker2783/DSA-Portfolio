@@ -1,6 +1,6 @@
-#include "list.hpp"
+#include "stack.hpp"
 #include <iostream>
-
+using namespace DataStructures;
 int main()
 {
     List<int> list(1);
