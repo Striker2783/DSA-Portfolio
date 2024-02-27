@@ -1,7 +1,6 @@
 #include "list.h"
 #include <iostream>
 
-#include <vector>
 int main()
 {
     List<int> list(1);
@@ -9,6 +8,7 @@ int main()
     {
         list.push_back(i);
     };
+    std::cout << list << std::endl;
     std::cout << "Hello Friend \n";
     return 0;
 }

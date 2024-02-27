@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "list.h"
+#include <iostream>
 
 TEST(ListTest, Constructor)
 {
@@ -50,7 +51,7 @@ TEST(ListTest, Empty_List)
 
 TEST(ListTest, Insert)
 {
-    List<int> l(10);
+    List<int> l(3);
     EXPECT_THROW(l.insert(2, 0), std::out_of_range);
     l.push_back(0);
     l.push_back(1);

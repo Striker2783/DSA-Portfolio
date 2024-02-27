@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 #include <stdexcept>
+#include <iostream>
 
 template <typename T>
 class List
@@ -25,9 +26,31 @@ public:
     inline bool is_full() { return index == max(); }
     inline size_t size() { return index; }
     inline size_t max() { return max_size; }
+    inline T &first()
+    {
+        return size() == 0 ? throw std::exception() : arr[0];
+    };
+    inline T &last() { return size() == 0 ? throw std::exception() : arr[index - 1]; }
     T pop_back();
     T &operator[](size_t i);
+    template <typename U>
+    friend std::ostream &operator<<(std::ostream &o, List<U> &list);
 };
+template <typename T>
+std::ostream &operator<<(std::ostream &o, List<T> &list)
+{
+    if (list.is_empty())
+    {
+        o << "[]";
+        return o;
+    }
+    o << '[';
+    for (size_t i = 0; i < list.index - 1; i++)
+        o << list[i] << ", ";
+    o << list.last();
+    o << ']';
+    return o;
+}
 template <typename T>
 T &List<T>::operator[](size_t i)
 {
@@ -72,10 +95,10 @@ void List<T>::move_back(size_t i)
     if (is_full())
         resize(max() * 2);
     T temp = arr[i];
-    for (size_t i = i; i < index - 1; i++)
+    for (size_t j = i; j < index - 1; j++)
     {
-        T temp2 = arr[i + 1];
-        arr[i + 1] = arr[i];
+        T temp2 = arr[j + 1];
+        arr[j + 1] = temp;
         temp = temp2;
     }
     arr[index] = temp;
