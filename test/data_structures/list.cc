@@ -65,3 +65,28 @@ TEST(ListTest, Insert)
     ASSERT_EQ(l[0], 5);
     ASSERT_EQ(l[1], 0);
 }
+
+TEST(ListTest, Equals)
+{
+    List<int> l(5);
+    l.push_back(0);
+    l.push_back(1);
+    l.push_back(2);
+    l.push_back(3);
+    l.push_back(4);
+    l.push_back(5);
+    List<int> l2(12);
+    l2.push_back(0);
+    l2.push_back(1);
+    l2.push_back(2);
+    l2.push_back(3);
+    l2.push_back(4);
+    l2.push_back(5);
+    ASSERT_TRUE(l == l2);
+    l2[0] = 6;
+    ASSERT_FALSE(l == l2);
+    List<int> l3 = l;
+    ASSERT_TRUE(l == l3);
+    l[0] = 6;
+    ASSERT_FALSE(l == l3);
+}

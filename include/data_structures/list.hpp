@@ -85,4 +85,23 @@ namespace DataStructures
         move_back(i);
         arr[i] = e;
     }
+    template <typename T>
+    bool List<T>::operator==(List<T> &o)
+    {
+        if (o.size() != size())
+            return false;
+        for (size_t i = 0; i < size(); i++)
+            if (arr[i] != o[i])
+                return false;
+        return true;
+    }
+    template <typename T>
+    List<T>::List(List<T> &o)
+    {
+        index = o.index;
+        max_size = o.max_size;
+        arr = new T[max_size];
+        for (size_t i = 0; i < index; i++)
+            arr[i] = o[i];
+    }
 }

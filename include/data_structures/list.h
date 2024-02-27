@@ -15,6 +15,7 @@ namespace DataStructures
     public:
         List() : arr(new T[10]), index(0), max_size(10){};
         List(size_t size) : arr(new T[size]), index(0), max_size(size){};
+        List(List<T> &o);
         ~List() { delete[] arr; };
         void push_back(T e);
         void insert(size_t i, T e);
@@ -26,6 +27,7 @@ namespace DataStructures
         inline T &last() { return size() == 0 ? throw std::exception() : arr[index - 1]; }
         T pop_back();
         T &operator[](size_t i);
+        bool operator==(List<T> &o);
         template <typename U>
         friend std::ostream &operator<<(std::ostream &o, List<U> &list);
     };
