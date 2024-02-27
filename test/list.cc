@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "list.h"
+#include "list.hpp"
 #include <iostream>
 
 TEST(ListTest, Constructor)
