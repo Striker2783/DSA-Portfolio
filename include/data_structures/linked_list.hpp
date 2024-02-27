@@ -7,7 +7,8 @@ namespace DataStructures
      *
      * @param sz Size of the sequence
      */
-    LinkedList::LinkedList(size_type sz)
+    template <typename T>
+    LinkedList<T>::LinkedList(size_t sz)
     {
         numElts = sz;
         // If the size is 0, set head and tail to null and exit
@@ -36,7 +37,8 @@ namespace DataStructures
      *
      * @param s LinkedList to be copied
      */
-    LinkedList::LinkedList(const LinkedList &s)
+    template <typename T>
+    LinkedList<T>::LinkedList(const LinkedList &s)
     {
         // Head is null so that the clear method skips the loop
         head = nullptr;
@@ -47,7 +49,8 @@ namespace DataStructures
      * @brief Destroy the LinkedList:: LinkedList object
      *
      */
-    LinkedList::~LinkedList()
+    template <typename T>
+    LinkedList<T>::~LinkedList()
     {
         clear();
     }
@@ -57,7 +60,8 @@ namespace DataStructures
      * @param s LinkedList to be copied
      * @return LinkedList&
      */
-    LinkedList &LinkedList::operator=(const LinkedList &s)
+    template <typename T>
+    LinkedList<T> &LinkedList<T>::operator=(const LinkedList<T> &s)
     {
         // Clears the data in the sequence
         clear();
@@ -73,9 +77,10 @@ namespace DataStructures
      *
      * @param position index to get
      * @throw Index < 0 or Index >= size of the sequence
-     * @return LinkedList::value_type&
+     * @return LinkedList::T&
      */
-    LinkedList::value_type &LinkedList::operator[](size_type position)
+    template <typename T>
+    T &LinkedList<T>::operator[](size_t position)
     {
         return get(position)->elt;
     }
@@ -84,7 +89,8 @@ namespace DataStructures
      *
      * @param value value to be inserted
      */
-    void LinkedList::push_back(const value_type &value)
+    template <typename T>
+    void LinkedList<T>::push_back(const T &value)
     {
         SequenceNode *newTail = new SequenceNode(value);
         // If empty, then set head and tail to a new node.
@@ -105,7 +111,8 @@ namespace DataStructures
      * @brief Removes an an element from the end of the sequence
      * @throws The sequence is empty
      */
-    void LinkedList::pop_back()
+    template <typename T>
+    void LinkedList<T>::pop_back()
     {
         if (empty())
         {
@@ -135,7 +142,8 @@ namespace DataStructures
      * @param value Value to be inserted
      * @throw If position >= size of sequence
      */
-    void LinkedList::insert(size_type position, value_type value)
+    template <typename T>
+    void LinkedList<T>::insert(size_t position, T value)
     {
         if (position < 0 || position >= numElts)
         {
@@ -170,9 +178,10 @@ namespace DataStructures
     /**
      * @brief Gets the first element of the sequence
      *  @throw LinkedList is empty
-     * @return const LinkedList::value_type&
+     * @return const LinkedList::T&
      */
-    const LinkedList::value_type &LinkedList::front() const
+    template <typename T>
+    const T &LinkedList<T>::front() const
     {
         if (empty())
         {
@@ -183,9 +192,10 @@ namespace DataStructures
     /**
      * @brief Gets the last element of the sequence
      *  @throw LinkedList is empty
-     * @return const LinkedList::value_type&
+     * @return const LinkedList::T&
      */
-    const LinkedList::value_type &LinkedList::back() const
+    template <typename T>
+    const T &LinkedList<T>::back() const
     {
         if (empty())
         {
@@ -199,16 +209,18 @@ namespace DataStructures
      * @return true if sequence is empty\
      * @return false if sequence is not empty
      */
-    bool LinkedList::empty() const
+    template <typename T>
+    bool LinkedList<T>::empty() const
     {
         return numElts == 0;
     }
     /**
      * @brief Returns the size of the sequence
      *
-     * @return LinkedList::size_type
+     * @return LinkedList::size_t
      */
-    LinkedList::size_type LinkedList::size() const
+    template <typename T>
+    size_t LinkedList<T>::size() const
     {
         return numElts;
     }
@@ -216,7 +228,8 @@ namespace DataStructures
      * @brief Clears the sequence's fields and frees its memory
      *
      */
-    void LinkedList::clear()
+    template <typename T>
+    void LinkedList<T>::clear()
     {
         SequenceNode *curr = head;
         // Loops through all nodes and destroys them
@@ -237,7 +250,8 @@ namespace DataStructures
      * @param position index to start erasing
      * @param count number of elements to remove
      */
-    void LinkedList::erase(size_type position, size_type count)
+    template <typename T>
+    void LinkedList<T>::erase(size_t position, size_t count)
     {
         if (position + count > numElts || empty())
         {
@@ -285,33 +299,11 @@ namespace DataStructures
      * @param s sequence
      * @return ostream&
      */
-    std::ostream &operator<<(std::ostream &os, const LinkedList &s)
+    template <typename T>
+    std::ostream &operator<<(std::ostream &os, const LinkedList<T> &s)
     {
         s.print(os);
         return os;
-    }
-    /**
-     * @brief Prints LinkedList to os
-     *
-     * @param os
-     */
-    void LinkedList::print(std::ostream &os) const
-    {
-        os << "<";
-        // If there is no head, then exit
-        if (head == nullptr)
-        {
-            os << ">";
-            return;
-        }
-        SequenceNode *curr = head;
-        // Loops through each node and prints it
-        for (; curr->next; curr = curr->next)
-        {
-            os << curr->elt << ", ";
-        }
-        // Print the last node
-        os << curr->elt << ">";
     }
     /**
      * @brief Gets the element at position
@@ -321,7 +313,8 @@ namespace DataStructures
      * @throw position >= number of elements
      * @return LinkedList::SequenceNode*
      */
-    LinkedList::SequenceNode *LinkedList::get(size_type position)
+    template <typename T>
+    typename LinkedList<T>::SequenceNode *LinkedList<T>::get(size_t position)
     {
         if (empty() || position >= numElts)
         {
