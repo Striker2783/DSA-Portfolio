@@ -1,4 +1,5 @@
-#include "stack.hpp"
+#include "linked_list.hpp"
+#include "list.hpp"
 #include <iostream>
 using namespace DataStructures;
 int main()
