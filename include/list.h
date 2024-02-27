@@ -26,10 +26,7 @@ public:
     inline bool is_full() { return index == max(); }
     inline size_t size() { return index; }
     inline size_t max() { return max_size; }
-    inline T &first()
-    {
-        return size() == 0 ? throw std::exception() : arr[0];
-    };
+    inline T &first() { return size() == 0 ? throw std::exception() : arr[0]; };
     inline T &last() { return size() == 0 ? throw std::exception() : arr[index - 1]; }
     T pop_back();
     T &operator[](size_t i);
