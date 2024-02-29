@@ -27,14 +27,14 @@ namespace DataStructures
 		/// sequence (seq). A reference to the copied sequence is returned.
 		/// @param s the sequence to be copied
 		/// @return *this with elements from s copied into
-		LinkedList &operator=(const LinkedList &s);
+		LinkedList &operator=(const LinkedList &s) const;
 
 		/// @brief The position satisfies ( position >= 0 && position <= last_index( ) ).
 		/// The return value is a reference to the item at index position in the sequence.
 		/// throws an exception	if the position is outside the bounds of the sequence
 		/// @param p position of item being accessed
 		/// @return reference to the item at index position in the sequence
-		T &operator[](size_t p);
+		T &operator[](size_t p) const;
 
 		/// @brief The value of item is append to the sequence.
 		/// @param v item to be added
@@ -55,12 +55,12 @@ namespace DataStructures
 		/// @brief The size of the sequence is greater than zero
 		/// throws an exception	if the sequence is empty
 		/// @return a reference to the first item in the sequence.
-		const T &front() const;
+		T &front() const;
 
 		/// @brief The size of the sequence is greater than zero.
 		/// throws an exception	if the sequence is empty
 		/// @return a reference to the last item in the sequence.
-		const T &back() const;
+		T &back() const;
 
 		/// @brief A true return value indicates size of the sequence is zero.
 		/// @return true if sequence is empty, false if sequence has size > 0
@@ -130,7 +130,7 @@ namespace DataStructures
 		 * @param position index
 		 * @return SequenceNode*
 		 */
-		SequenceNode *get(size_t position);
+		SequenceNode *get(size_t position) const;
 	}; // End of class LinkedList
 
 }

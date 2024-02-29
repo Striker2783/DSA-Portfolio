@@ -61,7 +61,7 @@ namespace DataStructures
      * @return LinkedList&
      */
     template <typename T>
-    LinkedList<T> &LinkedList<T>::operator=(const LinkedList<T> &s)
+    LinkedList<T> &LinkedList<T>::operator=(const LinkedList<T> &s) const
     {
         // Clears the data in the sequence
         clear();
@@ -80,7 +80,7 @@ namespace DataStructures
      * @return LinkedList::T&
      */
     template <typename T>
-    T &LinkedList<T>::operator[](size_t position)
+    T &LinkedList<T>::operator[](size_t position) const
     {
         return get(position)->elt;
     }
@@ -181,7 +181,7 @@ namespace DataStructures
      * @return const LinkedList::T&
      */
     template <typename T>
-    const T &LinkedList<T>::front() const
+    T &LinkedList<T>::front() const
     {
         if (empty())
         {
@@ -195,7 +195,7 @@ namespace DataStructures
      * @return const LinkedList::T&
      */
     template <typename T>
-    const T &LinkedList<T>::back() const
+    T &LinkedList<T>::back() const
     {
         if (empty())
         {
@@ -314,7 +314,7 @@ namespace DataStructures
      * @return LinkedList::SequenceNode*
      */
     template <typename T>
-    typename LinkedList<T>::SequenceNode *LinkedList<T>::get(size_t position)
+    typename LinkedList<T>::SequenceNode *LinkedList<T>::get(size_t position) const
     {
         if (empty() || position >= numElts)
         {
