@@ -7,7 +7,7 @@
 namespace DataStructures
 {
     template <typename T>
-    std::ostream &operator<<(std::ostream &o, List<T> &list)
+    std::ostream &operator<<(std::ostream &o, const List<T> &list)
     {
         if (list.is_empty())
         {
@@ -22,7 +22,7 @@ namespace DataStructures
         return o;
     }
     template <typename T>
-    T &List<T>::operator[](size_t i)
+    T &List<T>::operator[](size_t i) const
     {
         if (i >= index)
             throw std::out_of_range("");
@@ -86,7 +86,7 @@ namespace DataStructures
         arr[i] = e;
     }
     template <typename T>
-    bool List<T>::operator==(List<T> &o)
+    bool List<T>::operator==(List<T> &o) const
     {
         if (o.size() != size())
             return false;

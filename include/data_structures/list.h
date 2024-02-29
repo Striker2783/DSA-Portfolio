@@ -19,16 +19,16 @@ namespace DataStructures
         ~List() { delete[] arr; };
         void push_back(T e);
         void insert(size_t i, T e);
-        const inline bool is_empty() { return index == 0; }
-        const inline bool is_full() { return index == max(); }
-        const inline size_t size() { return index; }
-        const inline size_t max() { return max_size; }
-        inline T &first() { return size() == 0 ? throw std::exception() : arr[0]; };
-        inline T &last() { return size() == 0 ? throw std::exception() : arr[index - 1]; }
+        inline bool is_empty() const { return index == 0; }
+        inline bool is_full() const { return index == max(); }
+        inline size_t size() const { return index; }
+        inline size_t max() const { return max_size; }
+        inline T &first() const { return size() == 0 ? throw std::exception() : arr[0]; };
+        inline T &last() const { return size() == 0 ? throw std::exception() : arr[index - 1]; }
         T pop_back();
-        T &operator[](size_t i);
-        bool operator==(List<T> &o);
+        T &operator[](size_t i) const;
+        bool operator==(List<T> &o) const;
         template <typename U>
-        friend std::ostream &operator<<(std::ostream &o, List<U> &list);
+        friend std::ostream &operator<<(std::ostream &o, const List<U> &list);
     };
 } // namespace DataStructures
