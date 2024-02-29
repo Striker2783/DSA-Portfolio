@@ -13,8 +13,10 @@ target_include_directories(
 
 enable_testing()
 add_subdirectory(googletest)
-add_executable(test_project test/main.cc test/data_structures/list.cc
-                            test/data_structures/stack.cc)
+add_executable(
+  test_project
+  test/main.cc test/data_structures/list.cc test/data_structures/stack.cc
+  test/data_structures/linked_list.cc)
 target_link_libraries(test_project GTest::gtest_main)
 target_include_directories(test_project
                            PUBLIC ${PROJECT_SOURCE_DIR}/include/data_structures)
