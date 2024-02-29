@@ -14,6 +14,6 @@ namespace DataStructures
         Stack() : vec(List<T>()) {}
         void push(T e) { vec.push_back(e); }
         T pop() { return vec.pop_back(); }
-        T &peek() { return vec.last(); }
+        const T &peek() { return vec.last(); }
     };
 }

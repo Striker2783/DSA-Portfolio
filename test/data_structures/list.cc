@@ -85,7 +85,7 @@ TEST(ListTest, Equals)
     ASSERT_TRUE(l == l2);
     l2[0] = 6;
     ASSERT_FALSE(l == l2);
-    List<int> l3 = l;
+    List<int> l3 = List<int>(l);
     ASSERT_TRUE(l == l3);
     l[0] = 6;
     ASSERT_FALSE(l == l3);
